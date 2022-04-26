@@ -46,6 +46,7 @@ class Trajectory():
     Subsample the trajectory in order to reduce the overall number of samples and 
     increase the time difference between two samples.
     """
+    print("Subsampling with dt: ", subsampling_factor)
     if int(self.time_vec[0]*10) % 2 == 1:
       self.time_vec = self.time_vec[1:]
       self.pose_vec = self.pose_vec[1:, :]

@@ -1,7 +1,7 @@
 import os
 import numpy as np
 import cv2
-import pylab as pl
+import matplotlib.pyplot as pl
 from matplotlib.animation import FFMpegWriter
 import sys
 if sys.version_info[0] < 3:

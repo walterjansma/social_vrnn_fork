@@ -118,7 +118,8 @@ def plot_grid(ax, center, grid, grid_resolution, submap_size):
     plot_values = np.zeros([0, 2])
     for idx_x in range(grid.shape[0]):
         for idx_y in range(grid.shape[1]):
-            grid_coordinate_local = np.array([idx_x, idx_y]) * grid_resolution - submap_size / 2.0
+            #print(submap_size)
+            grid_coordinate_local = np.array([idx_x, idx_y]) * grid_resolution #- submap_size / 2.0
             grid_coordinate_global = grid_coordinate_local + center
             if grid[idx_x, idx_y] == 1:
                 plot_values = np.append(plot_values, np.array([[grid_coordinate_global[0], grid_coordinate_global[1]]]),
@@ -210,8 +211,8 @@ def path_from_vel(initial_pos, pred_vel,v0=np.array([0,0]), dt=0.1, n_vx=1, n_vy
 
 def to_image_frame(Hinv, loc):
   """
-	Given H^-1 and world coordinates, returns (u, v) in image coordinates.
-	"""
+  Given H^-1 and world coordinates, returns (u, v) in image coordinates.
+  """
   locHomogenous = np.hstack((loc, np.ones((loc.shape[0], 1))))
   if locHomogenous.ndim > 1:
     loc_tr = np.transpose(locHomogenous)
@@ -225,8 +226,8 @@ def to_image_frame(Hinv, loc):
 
 def to_pos_frame(Hinv, loc):
   """
-	Given H^-1 and world coordinates, returns (u, v) in image coordinates.
-	"""
+  Given H^-1 and world coordinates, returns (u, v) in image coordinates.
+  """
   locHomogenous = np.hstack((loc, np.ones((loc.shape[0], 1))))
   if locHomogenous.ndim > 1:
     loc_tr = np.transpose(locHomogenous)

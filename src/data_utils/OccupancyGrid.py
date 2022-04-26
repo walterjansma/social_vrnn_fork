@@ -1,5 +1,6 @@
 import numpy as np
 import cv2 as cv
+
 class OccupancyGrid():
   """
   Occupancy grid class for capturing static object information.
@@ -12,7 +13,7 @@ class OccupancyGrid():
     self.gridmap = None
     self.resolution = None
     self.map_size = None
-    self.center = np.array([0.0, 0.0])
+    self.center = np.array([-78,-40])#np.array([0.0, 0.0])
     
   def getIdx(self, pos_x, pos_y):
     """

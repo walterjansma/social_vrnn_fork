@@ -1,5 +1,5 @@
 import numpy as np
-import pylab as pl
+import matplotlib.pyplot as pl
 import sys
 if sys.version_info[0] < 3:
   import Trajectory as traj
@@ -128,9 +128,18 @@ class AgentContainer():
       self.agent_data[id].plot(ax, color=color_value,x_scale = 1, y_scale = 1)
       
     #sup.plot_grid(ax, np.array([self.occupancy_grid.center[0], self.occupancy_grid.center[1]]), self.occupancy_grid.gridmap, self.occupancy_grid.resolution, self.occupancy_grid.map_size)
-    sup.plot_grid(ax, np.array([0, 0]),self.occupancy_grid.gridmap, self.occupancy_grid.resolution, self.occupancy_grid.map_size)
-    ax.set_xlim([-self.occupancy_grid.center[0], self.occupancy_grid.center[0]])
-    ax.set_ylim([-self.occupancy_grid.center[1], self.occupancy_grid.center[1]])
+    #sup.plot_grid(ax, self.occupancy_grid.center, self.occupancy_grid.gridmap, self.occupancy_grid.resolution, self.occupancy_grid.map_size)
+    
+    ax.imshow(self.occupancy_grid.gridmap,
+             extent = (self.occupancy_grid.center[0], self.occupancy_grid.center[0] + self.occupancy_grid.map_size[0] * self.occupancy_grid.resolution,
+                       self.occupancy_grid.center[1], self.occupancy_grid.center[1] + self.occupancy_grid.map_size[1] * self.occupancy_grid.resolution),
+             cmap='gray_r')
+    ax.set_xlabel('x [m]')
+    ax.set_ylabel('y [m]')
+    ax.yaxis.set_label_coords(-0.08, .5)
+    ax.xaxis.set_label_coords(0.5, -0.09)
+    #ax.set_xlim([-self.occupancy_grid.center[0], self.occupancy_grid.center[0]])
+    #ax.set_ylim([-self.occupancy_grid.center[1], self.occupancy_grid.center[1]])
     
     ax.set_aspect('equal')
     
